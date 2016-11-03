@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\PROYECTO\MAIN PROGRAM\PREHEAT\PreHeat\cmsis_lib\include -I..\..\..\..\PROYECTO\MAIN PROGRAM\PREHEAT\PreHeat\cmsis_lib -I..\..\..\..\PROYECTO\MAIN PROGRAM\PREHEAT\PreHeat -I..\..\..\..\PROYECTO\MAIN PROGRAM\PREHEAT\PreHeat\cmsis -I..\..\..\..\PROYECTO\MAIN PROGRAM\PREHEAT -I..\..\..\..\PROYECTO\MAIN PROGRAM\PREHEAT\PreHeat\XYZ -I..\..\..\..\PROYECTO\MAIN PROGRAM\PREHEAT\PreHeat\cmsis_boot">
+      <target file="stm32f4xx_rcc.o" lastModified="15828a63853">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="158288020fe"/>
+      </target>
+      <target file="system_stm32f4xx.o" lastModified="15828a63a46">
+         <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="158288020bf"/>
+      </target>
+      <target file="stm32f4xx_gpio.o" lastModified="15828a639c7">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="15828802000"/>
+      </target>
+      <target file="stm32f4xx_adc.o" lastModified="15828a63928">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_adc.c" lastModified="15828809531"/>
+      </target>
+      <target file="syscalls.o" lastModified="15828a63abe">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="158287fd4cd"/>
+      </target>
+      <target file="main.o" lastModified="15828a63795">
+         <source file="..\..\..\main.c" lastModified="15828a633da"/>
+      </target>
+      <target file="startup_stm32f4xx.o" lastModified="15828a63710">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="15828802033"/>
+      </target>
+   </processor>
+</history>

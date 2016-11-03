@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=PREHEAT.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\PREHEAT -TC:\CooCox\CoIDE\configuration\ProgramData\PREHEAT/arm-gcc-link.ld -g">
+      <target file="PREHEAT.elf" lastModified="15828a63ced">
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="15828a63710"/>
+         <source file="..\obj\main.o" lastModified="15828a63795"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="15828a63853"/>
+         <source file="..\obj\stm32f4xx_adc.o" lastModified="15828a63928"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="15828a639c7"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="15828a63a46"/>
+         <source file="..\obj\syscalls.o" lastModified="15828a63abe"/>
+      </target>
+   </processor>
+</history>
