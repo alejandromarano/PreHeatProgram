@@ -1,3 +1,10 @@
+/** PROGRAMA PRINCIPAL PRE-CALENTADOR DE PCB
+ *  Integrantes: Marano Garcia
+ *
+ *
+ *  Adelante y suerte
+ */
+
 /**
   ******************************************************************************
   * @file    main.c
@@ -25,13 +32,20 @@
 #include "stm32f4xx_rcc.h"
 #include "PHinclude.h"
 
+
 int main(void)
 	{
-	void Delay(uint32_t nCount); //Función básica para generar un delay.
+
+	SystemInit();
+
+	UB_LCD_2x16_Init();
+
+
 
     declarar_leds();
 
 	declarar_boton();
+
 
 
     while (1)
@@ -55,13 +69,13 @@ int main(void)
 		GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
 
 		Delay(0x0FFFFF);
+
+		 UB_LCD_2x16_String(0,0,"TDII FRBB");    // usa una funcion ya definida para imprimir un string
+		 Delay(10000000);
+   	     UB_LCD_2x16_Clear();                    //usa una funcion ya definida para limpiar las string
+	     UB_LCD_2x16_String(0,0,"lo mejor!");
+	     Delay(10000000);                        // produce delay para poder ver los switcheos de string
+	     UB_LCD_2x16_Clear();
+
     	}
-	}
-
-
-void Delay(uint32_t nCount)
-	{
-	while(nCount--)
-		{
-		}
 	}

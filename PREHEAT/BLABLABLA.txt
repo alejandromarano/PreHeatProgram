@@ -1,1 +1,6 @@
-chau 2
+3-Nov
+
+-Aprendi a usar GitHub
+-Conecte el LCD 2X16
+-Integre 2 programas en uno 
+ GPIO Y MANEJO DE LCD

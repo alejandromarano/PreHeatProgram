@@ -24,11 +24,6 @@ void declarar_leds(void)
 
 }
 
-
-
-
-
-
 void declarar_boton(void)
 {
 	    GPIO_InitTypeDef GPIO_InitStructure; //Estructura para la inicialización de los GPIO
@@ -63,3 +58,10 @@ void declarar_boton(void)
 	    GPIO_Init(GPIOA, &GPIO_InitStructure);	//Se aplica la configuración definida anteriormente
 	    										//al puerto A
 }
+
+void Delay(uint32_t nCount)
+	{
+	while(nCount--)
+		{
+		}
+	}
