@@ -37,10 +37,13 @@
 
 int32_t adc_valor_obtenido;
 
+uint32_t time_ms = 0;
+
+static __IO uint32_t TimingDelay;
+
+
 int main(void)
 	{
-
-	int_fast8_t menu=0;
 
 	SystemInit(); // inicializa el sistema
 
@@ -52,12 +55,14 @@ int main(void)
 
 	adc_inicializar();   // Inicializa ADC polling
 
+	SysTick_Config(SystemCoreClock / 1000);
+
 	char temperatura[10];
 
     while (1)
     	{
 
-    	Delay(100000);
+    	Delay(500);
 
     	adc_valor_obtenido=adc_leer_cuentas();
 
@@ -66,7 +71,7 @@ int main(void)
     	sprintf(temperatura,"%d",adc_valor_obtenido);
 
     	UB_LCD_2x16_String(0,0,temperatura);    // usa una funcion ya definida para imprimir un string
-    	Delay(10000000);
+    	Delay(500);
     	UB_LCD_2x16_Clear();                    //usa una funcion ya definida para limpiar las string
 
 
@@ -84,7 +89,7 @@ int main(void)
     	       	GPIO_ResetBits(GPIOD,GPIO_Pin_14|GPIO_Pin_15);
     	       }
 
-    	    Delay(10000000);
+    	    Delay(500);
 
     	    GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
 
@@ -109,15 +114,22 @@ int main(void)
 
 		Delay(0x0FFFFF);
 */
-/*    	 menu=GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
-
-    	 if(menu){
-    	 UB_LCD_2x16_String(0,0,"Pre-Calentador de PCB");    // usa una funcion ya definida para imprimir un string
-		 Delay(10000000);
-   	     UB_LCD_2x16_Clear();                    //usa una funcion ya definida para limpiar las string
-	     UB_LCD_2x16_String(0,0,"lo mejor!");
-	     Delay(10000000);                        // produce delay para poder ver los switcheos de string
-	     UB_LCD_2x16_Clear();
-    	 }*/
     	}
 	}
+
+
+void Delay(__IO uint32_t nTime)
+{
+  TimingDelay = nTime;
+
+  while(TimingDelay != 0);
+}
+
+void TimingDelay_Decrement(void)
+{
+  if (TimingDelay != 0)
+  {
+    TimingDelay--;
+  }
+}
+

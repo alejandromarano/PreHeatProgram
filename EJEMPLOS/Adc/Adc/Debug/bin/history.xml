@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -flto -Map=Adc.map -O0 --gc-sections -entry=main -LC:\CooCox\CoIDE\configuration\ProgramData\Adc -TC:\CooCox\CoIDE\configuration\ProgramData\Adc/arm-gcc-link.ld -g">
-      <target file="Adc.elf" lastModified="14682d022fd">
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="14682d00d77"/>
-         <source file="..\obj\main.o" lastModified="14682d01001"/>
-         <source file="..\obj\stm32f4xx_rcc.o" lastModified="14682d01155"/>
-         <source file="..\obj\stm32f4xx_adc.o" lastModified="14682d012a9"/>
-         <source file="..\obj\stm32f4xx_gpio.o" lastModified="14682d01371"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="14682d01411"/>
-         <source file="..\obj\adc.o" lastModified="14682d014b1"/>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -flto -Map=Adc.map -O0 --gc-sections --entry=main -entry=main -LC:\CooCox\CoIDE\configuration\ProgramData\Adc -TC:\CooCox\CoIDE\configuration\ProgramData\Adc/arm-gcc-link.ld -g">
+      <target file="Adc.elf" lastModified="1586c400203">
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="1586c3ff400"/>
+         <source file="..\obj\main.o" lastModified="1586c3ff53d"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="1586c3ff6db"/>
+         <source file="..\obj\stm32f4xx_adc.o" lastModified="1586c3ff87d"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="1586c3ff9c1"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="1586c3ffae7"/>
+         <source file="..\obj\adc.o" lastModified="1586c3ffc0e"/>
       </target>
    </processor>
 </history>
