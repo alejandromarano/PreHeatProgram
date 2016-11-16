@@ -32,6 +32,10 @@
 #include "stm32f4xx_rcc.h"
 #include "PHinclude.h"
 #include "adc.h"
+#include "LCD/include/stm32_ub_lcd_2x16.h"
+#include "stdio.h"
+
+void Delay(__IO uint32_t nTime);  //funcion Delay que usa SysTick
 
 #define MAX_ADC	4095.0
 
@@ -55,35 +59,42 @@ int main(void)
 
 	adc_inicializar();   // Inicializa ADC polling
 
-	SysTick_Config(SystemCoreClock / 1000);
+	SysTick_Config(SystemCoreClock / 1000);   // Ejemplo:
 
-	char temperatura[10];
+	// HCLK= 168MHz
+	// Requerimiento= 1 mseg
+	// 		1seg --- 168 Mticks
+	// 		1ms ---- x
+	// 		x = 168.000 ticks
+	// 		para lograr este valor divido 168 M ticks / 1000 = 168.000 ticks
+
+	char temperatura[4]; // String donde se guarda la temperatura
 
     while (1)
     	{
 
     	Delay(500);
 
-    	adc_valor_obtenido=adc_leer_cuentas();
+    	adc_valor_obtenido=adc_leer_cuentas();   // Lee el ADC de la funcion adc.h y PHinclude
 
-    	adc_valor_obtenido=((adc_valor_obtenido*300)/4095);
+    	adc_valor_obtenido=((adc_valor_obtenido*300)/4095);  // de Tension de ADC a Grados centigrados
 
-    	sprintf(temperatura,"%d",adc_valor_obtenido);
+    	sprintf(temperatura,"%d",adc_valor_obtenido);   // pasa de un entero a un String para imprimir
 
-    	UB_LCD_2x16_String(0,0,temperatura);    // usa una funcion ya definida para imprimir un string
+    	UB_LCD_2x16_String(0,1,temperatura);    // usa una funcion ya definida para imprimir un string
     	Delay(500);
     	UB_LCD_2x16_Clear();                    //usa una funcion ya definida para limpiar las string
 
 
     	    GPIO_ResetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
 
-    	    if(adc_valor_obtenido<30)
+    	    if(adc_valor_obtenido<30)   //menor de 30 grados enciende el led VERDE
     	    {
     	    	GPIO_SetBits(GPIOD,GPIO_Pin_12);
     	    	GPIO_ResetBits(GPIOD,GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
     	    }
 
-    	    if(adc_valor_obtenido>=30)
+    	    if(adc_valor_obtenido>=30) //Mayor o igual a  30 grados enciende el led ROJO
     	       {
     	    	GPIO_SetBits(GPIOD,GPIO_Pin_13);
     	       	GPIO_ResetBits(GPIOD,GPIO_Pin_14|GPIO_Pin_15);
@@ -93,27 +104,6 @@ int main(void)
 
     	    GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
 
-/*
-		GPIO_SetBits(GPIOD, GPIO_Pin_12);	//PD12 encendido
-		Delay(0x0FFFFF);
-		GPIO_SetBits(GPIOD, GPIO_Pin_13);	//PD13 encendido
-		Delay(0x0FFFFF);
-
-
-        if(!GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0))
-        	{
-        	GPIO_SetBits(GPIOD, GPIO_Pin_14);	//PD14 encendido
-        	Delay(0x0FFFFF);
-        	GPIO_SetBits(GPIOD, GPIO_Pin_15);	//PD15 encendido
-        	Delay(0x0FFFFF);
-        	}
-
-		//Se apagan todos los LEDs simultaneamente
-
-		GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
-
-		Delay(0x0FFFFF);
-*/
     	}
 	}
 

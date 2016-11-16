@@ -1,0 +1,5 @@
+1-Generar un proyecto desde Repository en Coocox
+2-En la ventana de Proyect generar una carpeta (Add Group) con el nombre LCD
+3-Dentro de LCD generar dos nuevas carpetas Include y Source
+4-Dentro de estas dos últimas carpetas generadas colocar stm32_ub_lcd_2x16.h y stm32_ub_lcd_2x16.c respectivamente
+5-Sobreescribir el contenido del main 
