@@ -1,0 +1,185 @@
+Archive member included because of file (symbol)
+
+c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_addsubdf3.o)
+                              C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o (__aeabi_i2d)
+c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_cmpdf2.o)
+                              C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o (__aeabi_dcmplt)
+
+Allocating common symbols
+Common symbol       size              file
+
+adc_cuentas         0x4               ..\obj\main.o (symbol from plugin)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 ..\obj\startup_stm32f4xx.o (symbol from plugin)
+ .data          0x00000000       0x24 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+ .data          0x00000000        0x0 c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_cmpdf2.o)
+ .bss           0x00000000        0x0 c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_cmpdf2.o)
+ .text          0x00000000        0x0 ..\obj\main.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\stm32f4xx_rcc.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\stm32f4xx_adc.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\stm32f4xx_gpio.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\system_stm32f4xx.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\adc.o (symbol from plugin)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x08000000         0x00100000         xr
+ram              0x20000000         0x00020000         xrw
+ram1             0x10000000         0x00010000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x20020000                _eram = 0x20020000
+
+.text           0x08000000     0x12f8
+ *(.isr_vector .isr_vector.*)
+ .isr_vector    0x08000000      0x188 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+                0x08000000                g_pfnVectors
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x08000188      0xcf0 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+                0x08000188                Reset_Handler
+                0x080001f8                main
+ .text          0x08000e78      0x370 c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_addsubdf3.o)
+                0x08000e78                __aeabi_drsub
+                0x08000e80                __aeabi_dsub
+                0x08000e80                __subdf3
+                0x08000e84                __aeabi_dadd
+                0x08000e84                __adddf3
+                0x080010fc                __floatunsidf
+                0x080010fc                __aeabi_ui2d
+                0x0800111c                __floatsidf
+                0x0800111c                __aeabi_i2d
+                0x08001140                __aeabi_f2d
+                0x08001140                __extendsfdf2
+                0x0800117c                __floatundidf
+                0x0800117c                __aeabi_ul2d
+                0x0800118c                __floatdidf
+                0x0800118c                __aeabi_l2d
+ .text          0x080011e8      0x110 c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_cmpdf2.o)
+                0x080011e8                __gtdf2
+                0x080011e8                __gedf2
+                0x080011f0                __ltdf2
+                0x080011f0                __ledf2
+                0x080011f8                __nedf2
+                0x080011f8                __eqdf2
+                0x080011f8                __cmpdf2
+                0x08001274                __aeabi_cdrcmple
+                0x08001284                __aeabi_cdcmpeq
+                0x08001284                __aeabi_cdcmple
+                0x08001294                __aeabi_dcmpeq
+                0x080012a8                __aeabi_dcmplt
+                0x080012bc                __aeabi_dcmple
+                0x080012d0                __aeabi_dcmpge
+                0x080012e4                __aeabi_dcmpgt
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.rodata .rodata* .gnu.linkonce.r.*)
+
+.vfp11_veneer   0x080012f8        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x080012f8        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x080012f8        0x0
+ .iplt          0x00000000        0x0 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+
+.rel.dyn        0x080012f8        0x0
+ .rel.iplt      0x00000000        0x0 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x080012f8                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x080012f8                __exidx_end = .
+                0x080012f8                . = ALIGN (0x4)
+                0x080012f8                _etext = .
+                0x080012f8                _sidata = .
+
+.data           0x20000000        0x0 load address 0x080012f8
+                0x20000000                _sdata = .
+ *(.data .data.*)
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _edata = .
+
+.igot.plt       0x20000000        0x0
+ .igot.plt      0x00000000        0x0 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+
+.bss            0x20000000        0x4
+                0x20000000                _sbss = .
+ *(.bss .bss.*)
+ .bss           0x20000000        0x4 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+ *(COMMON)
+                0x20000004                . = ALIGN (0x4)
+                0x20000004                _ebss = .
+
+.co_stack       0x20000004      0x804
+                0x20000008                . = ALIGN (0x8)
+ *fill*         0x20000004        0x4 00
+ *(.co_stack .co_stack.*)
+ .co_stack      0x20000008      0x800 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+                0x20000808                . = ALIGN (0x4)
+                0x20000808                _end = .
+LOAD ..\obj\startup_stm32f4xx.o
+LOAD C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+LOAD c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a
+LOAD c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/armv7e-m\libg.a
+LOAD c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a
+LOAD ..\obj\main.o
+LOAD ..\obj\stm32f4xx_rcc.o
+LOAD ..\obj\stm32f4xx_adc.o
+LOAD ..\obj\stm32f4xx_gpio.o
+LOAD ..\obj\system_stm32f4xx.o
+LOAD ..\obj\adc.o
+START GROUP
+LOAD c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a
+LOAD c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/armv7e-m\libg.a
+LOAD c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a
+END GROUP
+OUTPUT(Adc.elf elf32-littlearm)
+
+.debug_info     0x00000000      0xbbf
+ .debug_info    0x00000000      0xbbf C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+
+.debug_abbrev   0x00000000      0x244
+ .debug_abbrev  0x00000000      0x244 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+
+.debug_loc      0x00000000      0x5c4
+ .debug_loc     0x00000000      0x5c4 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+
+.debug_aranges  0x00000000       0x20
+ .debug_aranges
+                0x00000000       0x20 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+
+.debug_line     0x00000000      0x422
+ .debug_line    0x00000000      0x422 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+
+.debug_str      0x00000000      0x749
+ .debug_str     0x00000000      0x749 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+                                0x771 (size before relaxing)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+                                 0x71 (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x31
+ .ARM.attributes
+                0x00000000       0x31 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o
+ .ARM.attributes
+                0x00000031       0x1e c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x0000004f       0x1e c:/program files/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_arm_cmpdf2.o)
+
+.debug_frame    0x00000000      0x310
+ .debug_frame   0x00000000      0x310 C:\Users\German\AppData\Local\Temp\cccwfeVg.ltrans0.ltrans.o

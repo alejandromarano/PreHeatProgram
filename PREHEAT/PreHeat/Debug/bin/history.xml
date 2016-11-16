@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=PREHEAT.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\PREHEAT -TC:\CooCox\CoIDE\configuration\ProgramData\PREHEAT/arm-gcc-link.ld -g">
-      <target file="PREHEAT.elf" lastModified="158295f0d00">
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="158295f052c"/>
-         <source file="..\obj\main.o" lastModified="158295f05f2"/>
-         <source file="..\obj\stm32f4xx_rcc.o" lastModified="158295f06d6"/>
-         <source file="..\obj\stm32f4xx_adc.o" lastModified="158295f07bc"/>
-         <source file="..\obj\stm32f4xx_gpio.o" lastModified="158295f085f"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="158295f08dd"/>
-         <source file="..\obj\syscalls.o" lastModified="158295f0988"/>
-         <source file="..\obj\adc.o" lastModified="158295f0a0d"/>
-         <source file="..\obj\stm32_ub_lcd_2x16.o" lastModified="158295f0abf"/>
+      <target file="PREHEAT.elf" lastModified="1586bc606e9">
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="1586bc5f936"/>
+         <source file="..\obj\main.o" lastModified="1586bc5faaf"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="1586bc5fc27"/>
+         <source file="..\obj\stm32f4xx_adc.o" lastModified="1586bc5fd77"/>
+         <source file="..\obj\printf.o" lastModified="1586bc5fead"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="1586bc5ffdf"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="1586bc600f4"/>
+         <source file="..\obj\syscalls.o" lastModified="1586bc6020b"/>
+         <source file="..\obj\adc.o" lastModified="1586bc60326"/>
+         <source file="..\obj\stm32_ub_lcd_2x16.o" lastModified="1586bc60458"/>
       </target>
    </processor>
 </history>

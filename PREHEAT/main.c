@@ -42,15 +42,17 @@ int main(void)
 
 	int_fast8_t menu=0;
 
-	SystemInit();
+	SystemInit(); // inicializa el sistema
 
-	UB_LCD_2x16_Init();
+	UB_LCD_2x16_Init(); // inicializa el display 16x2
 
-    declarar_leds();
+    declarar_leds();     // GPIO leds pin 11 12 13 14
 
-	declarar_boton();
+	declarar_boton();    // GPIO boton
 
-	adc_inicializar();
+	adc_inicializar();   // Inicializa ADC polling
+
+	char temperatura[10];
 
     while (1)
     	{
@@ -59,30 +61,32 @@ int main(void)
 
     	adc_valor_obtenido=adc_leer_cuentas();
 
+    	adc_valor_obtenido=((adc_valor_obtenido*300)/4095);
+
+    	sprintf(temperatura,"%d",adc_valor_obtenido);
+
+    	UB_LCD_2x16_String(0,0,temperatura);    // usa una funcion ya definida para imprimir un string
+    	Delay(10000000);
+    	UB_LCD_2x16_Clear();                    //usa una funcion ya definida para limpiar las string
+
+
     	    GPIO_ResetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
 
-    	    if(adc_valor_obtenido<MAX_ADC/4 && adc_valor_obtenido>0.05 * MAX_ADC)
+    	    if(adc_valor_obtenido<30)
     	    {
     	    	GPIO_SetBits(GPIOD,GPIO_Pin_12);
     	    	GPIO_ResetBits(GPIOD,GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
     	    }
 
-    	    if(adc_valor_obtenido>MAX_ADC/4 && adc_valor_obtenido<MAX_ADC/2)
+    	    if(adc_valor_obtenido>=30)
     	       {
-    	    	GPIO_SetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_13);
+    	    	GPIO_SetBits(GPIOD,GPIO_Pin_13);
     	       	GPIO_ResetBits(GPIOD,GPIO_Pin_14|GPIO_Pin_15);
     	       }
 
-    	    if(adc_valor_obtenido>MAX_ADC/2 && adc_valor_obtenido<MAX_ADC*3/4)
-    	       {
-    	    	GPIO_SetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14);
-    	        GPIO_ResetBits(GPIOD,GPIO_Pin_15);
-    	       }
-    	    if(adc_valor_obtenido>MAX_ADC*3/4)
-    	       {
-    	       	GPIO_SetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
-    	       }
+    	    Delay(10000000);
 
+    	    GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
 
 /*
 		GPIO_SetBits(GPIOD, GPIO_Pin_12);	//PD12 encendido
@@ -105,7 +109,7 @@ int main(void)
 
 		Delay(0x0FFFFF);
 */
-    	 menu=GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
+/*    	 menu=GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
 
     	 if(menu){
     	 UB_LCD_2x16_String(0,0,"Pre-Calentador de PCB");    // usa una funcion ya definida para imprimir un string
@@ -114,6 +118,6 @@ int main(void)
 	     UB_LCD_2x16_String(0,0,"lo mejor!");
 	     Delay(10000000);                        // produce delay para poder ver los switcheos de string
 	     UB_LCD_2x16_Clear();
-    	 }
+    	 }*/
     	}
 	}

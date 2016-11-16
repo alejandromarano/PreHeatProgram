@@ -4,3 +4,8 @@
 -Conecte el LCD 2X16
 -Integre 2 programas en uno 
  GPIO Y MANEJO DE LCD
+
+16-Noviembre
+
+-LM35 
+-Leds condicionados por la temp
