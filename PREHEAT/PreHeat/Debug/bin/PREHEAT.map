@@ -243,7 +243,7 @@ Linker script and memory map
 
                 0x20020000                _eram = 0x20020000
 
-.text           0x08000000     0x1af4
+.text           0x08000000     0x1b0c
  *(.isr_vector)
  .isr_vector    0x08000000      0x188 ..\obj\startup_stm32f4xx.o
                 0x08000000                g_pfnVectors
@@ -346,13 +346,16 @@ Linker script and memory map
  .text.declarar_boton
                 0x08000304       0x44 ..\obj\main.o
                 0x08000304                declarar_boton
- .text.main     0x08000348      0x148 ..\obj\main.o
+ .text.main     0x08000348       0xe4 ..\obj\main.o
                 0x08000348                main
- .text.Delay    0x08000490       0x30 ..\obj\main.o
-                0x08000490                Delay
+ .text.Delay    0x0800042c       0x30 ..\obj\main.o
+                0x0800042c                Delay
  .text.TimingDelay_Decrement
-                0x080004c0       0x30 ..\obj\main.o
-                0x080004c0                TimingDelay_Decrement
+                0x0800045c       0x30 ..\obj\main.o
+                0x0800045c                TimingDelay_Decrement
+ .text.color_segun_temperatura
+                0x0800048c       0x64 ..\obj\main.o
+                0x0800048c                color_segun_temperatura
  .text.RCC_AHB1PeriphClockCmd
                 0x080004f0       0x54 ..\obj\stm32f4xx_rcc.o
                 0x080004f0                RCC_AHB1PeriphClockCmd
@@ -384,123 +387,123 @@ Linker script and memory map
                 0x080005dc        0xc ..\obj\stm32f4xx_it.o
                 0x080005dc                PendSV_Handler
  .text.SysTick_Handler
-                0x080005e8        0xc ..\obj\stm32f4xx_it.o
+                0x080005e8       0x10 ..\obj\stm32f4xx_it.o
                 0x080005e8                SysTick_Handler
  .text.ADC_Init
-                0x080005f4       0xb8 ..\obj\stm32f4xx_adc.o
-                0x080005f4                ADC_Init
+                0x080005f8       0xb8 ..\obj\stm32f4xx_adc.o
+                0x080005f8                ADC_Init
  .text.ADC_StructInit
-                0x080006ac       0x4c ..\obj\stm32f4xx_adc.o
-                0x080006ac                ADC_StructInit
+                0x080006b0       0x4c ..\obj\stm32f4xx_adc.o
+                0x080006b0                ADC_StructInit
  .text.ADC_CommonInit
-                0x080006f8       0x5c ..\obj\stm32f4xx_adc.o
-                0x080006f8                ADC_CommonInit
+                0x080006fc       0x5c ..\obj\stm32f4xx_adc.o
+                0x080006fc                ADC_CommonInit
  .text.ADC_CommonStructInit
-                0x08000754       0x34 ..\obj\stm32f4xx_adc.o
-                0x08000754                ADC_CommonStructInit
- .text.ADC_Cmd  0x08000788       0x38 ..\obj\stm32f4xx_adc.o
-                0x08000788                ADC_Cmd
+                0x08000758       0x34 ..\obj\stm32f4xx_adc.o
+                0x08000758                ADC_CommonStructInit
+ .text.ADC_Cmd  0x0800078c       0x38 ..\obj\stm32f4xx_adc.o
+                0x0800078c                ADC_Cmd
  .text.ADC_InjectedChannelConfig
-                0x080007c0      0x144 ..\obj\stm32f4xx_adc.o
-                0x080007c0                ADC_InjectedChannelConfig
+                0x080007c4      0x144 ..\obj\stm32f4xx_adc.o
+                0x080007c4                ADC_InjectedChannelConfig
  .text.ADC_InjectedSequencerLengthConfig
-                0x08000904       0x4c ..\obj\stm32f4xx_adc.o
-                0x08000904                ADC_InjectedSequencerLengthConfig
+                0x08000908       0x4c ..\obj\stm32f4xx_adc.o
+                0x08000908                ADC_InjectedSequencerLengthConfig
  .text.ADC_SetInjectedOffset
-                0x08000950       0x34 ..\obj\stm32f4xx_adc.o
-                0x08000950                ADC_SetInjectedOffset
+                0x08000954       0x34 ..\obj\stm32f4xx_adc.o
+                0x08000954                ADC_SetInjectedOffset
  .text.ADC_SoftwareStartInjectedConv
-                0x08000984       0x20 ..\obj\stm32f4xx_adc.o
-                0x08000984                ADC_SoftwareStartInjectedConv
+                0x08000988       0x20 ..\obj\stm32f4xx_adc.o
+                0x08000988                ADC_SoftwareStartInjectedConv
  .text.ADC_GetInjectedConversionValue
-                0x080009a4       0x34 ..\obj\stm32f4xx_adc.o
-                0x080009a4                ADC_GetInjectedConversionValue
+                0x080009a8       0x34 ..\obj\stm32f4xx_adc.o
+                0x080009a8                ADC_GetInjectedConversionValue
  .text.ADC_GetFlagStatus
-                0x080009d8       0x3c ..\obj\stm32f4xx_adc.o
-                0x080009d8                ADC_GetFlagStatus
+                0x080009dc       0x3c ..\obj\stm32f4xx_adc.o
+                0x080009dc                ADC_GetFlagStatus
  .text.ADC_ClearFlag
-                0x08000a14       0x20 ..\obj\stm32f4xx_adc.o
-                0x08000a14                ADC_ClearFlag
- .text.PutChar  0x08000a34       0x24 ..\obj\printf.o
-                0x08000a34                PutChar
+                0x08000a18       0x20 ..\obj\stm32f4xx_adc.o
+                0x08000a18                ADC_ClearFlag
+ .text.PutChar  0x08000a38       0x24 ..\obj\printf.o
+                0x08000a38                PutChar
  .text.PutString
-                0x08000a58       0x48 ..\obj\printf.o
-                0x08000a58                PutString
+                0x08000a5c       0x48 ..\obj\printf.o
+                0x08000a5c                PutString
  .text.PutUnsignedInt
-                0x08000aa0       0xbc ..\obj\printf.o
-                0x08000aa0                PutUnsignedInt
+                0x08000aa4       0xbc ..\obj\printf.o
+                0x08000aa4                PutUnsignedInt
  .text.PutSignedInt
-                0x08000b5c      0x12c ..\obj\printf.o
-                0x08000b5c                PutSignedInt
- .text.PutHexa  0x08000c88       0xe8 ..\obj\printf.o
-                0x08000c88                PutHexa
+                0x08000b60      0x12c ..\obj\printf.o
+                0x08000b60                PutSignedInt
+ .text.PutHexa  0x08000c8c       0xe8 ..\obj\printf.o
+                0x08000c8c                PutHexa
  .text.vsnprintf
-                0x08000d70      0x2a4 ..\obj\printf.o
-                0x08000d70                vsnprintf
+                0x08000d74      0x2a4 ..\obj\printf.o
+                0x08000d74                vsnprintf
  .text.vsprintf
-                0x08001014       0x28 ..\obj\printf.o
-                0x08001014                vsprintf
- .text.sprintf  0x0800103c       0x30 ..\obj\printf.o
-                0x0800103c                sprintf
+                0x08001018       0x28 ..\obj\printf.o
+                0x08001018                vsprintf
+ .text.sprintf  0x08001040       0x30 ..\obj\printf.o
+                0x08001040                sprintf
  .text.GPIO_Init
-                0x0800106c      0x144 ..\obj\stm32f4xx_gpio.o
-                0x0800106c                GPIO_Init
+                0x08001070      0x144 ..\obj\stm32f4xx_gpio.o
+                0x08001070                GPIO_Init
  .text.GPIO_StructInit
-                0x080011b0       0x3c ..\obj\stm32f4xx_gpio.o
-                0x080011b0                GPIO_StructInit
+                0x080011b4       0x3c ..\obj\stm32f4xx_gpio.o
+                0x080011b4                GPIO_StructInit
  .text.GPIO_SetBits
-                0x080011ec       0x1c ..\obj\stm32f4xx_gpio.o
-                0x080011ec                GPIO_SetBits
+                0x080011f0       0x1c ..\obj\stm32f4xx_gpio.o
+                0x080011f0                GPIO_SetBits
  .text.GPIO_ResetBits
-                0x08001208       0x1c ..\obj\stm32f4xx_gpio.o
-                0x08001208                GPIO_ResetBits
+                0x0800120c       0x1c ..\obj\stm32f4xx_gpio.o
+                0x0800120c                GPIO_ResetBits
  .text.SystemInit
-                0x08001224       0x94 ..\obj\system_stm32f4xx.o
-                0x08001224                SystemInit
+                0x08001228       0x94 ..\obj\system_stm32f4xx.o
+                0x08001228                SystemInit
  .text.SetSysClock
-                0x080012b8      0x188 ..\obj\system_stm32f4xx.o
+                0x080012bc      0x188 ..\obj\system_stm32f4xx.o
  .text.adc_inicializar
-                0x08001440      0x110 ..\obj\adc.o
-                0x08001440                adc_inicializar
+                0x08001444      0x110 ..\obj\adc.o
+                0x08001444                adc_inicializar
  .text.adc_leer_cuentas
-                0x08001550       0x5c ..\obj\adc.o
-                0x08001550                adc_leer_cuentas
+                0x08001554       0x5c ..\obj\adc.o
+                0x08001554                adc_leer_cuentas
  .text.UB_LCD_2x16_Init
-                0x080015ac       0x44 ..\obj\stm32_ub_lcd_2x16.o
-                0x080015ac                UB_LCD_2x16_Init
+                0x080015b0       0x44 ..\obj\stm32_ub_lcd_2x16.o
+                0x080015b0                UB_LCD_2x16_Init
  .text.UB_LCD_2x16_Clear
-                0x080015f0       0x18 ..\obj\stm32_ub_lcd_2x16.o
-                0x080015f0                UB_LCD_2x16_Clear
+                0x080015f4       0x18 ..\obj\stm32_ub_lcd_2x16.o
+                0x080015f4                UB_LCD_2x16_Clear
  .text.UB_LCD_2x16_String
-                0x08001608       0x40 ..\obj\stm32_ub_lcd_2x16.o
-                0x08001608                UB_LCD_2x16_String
+                0x0800160c       0x40 ..\obj\stm32_ub_lcd_2x16.o
+                0x0800160c                UB_LCD_2x16_String
  .text.P_LCD_2x16_InitIO
-                0x08001648       0xe4 ..\obj\stm32_ub_lcd_2x16.o
-                0x08001648                P_LCD_2x16_InitIO
+                0x0800164c       0xe4 ..\obj\stm32_ub_lcd_2x16.o
+                0x0800164c                P_LCD_2x16_InitIO
  .text.P_LCD_2x16_PinLo
-                0x0800172c       0x54 ..\obj\stm32_ub_lcd_2x16.o
-                0x0800172c                P_LCD_2x16_PinLo
+                0x08001730       0x54 ..\obj\stm32_ub_lcd_2x16.o
+                0x08001730                P_LCD_2x16_PinLo
  .text.P_LCD_2x16_PinHi
-                0x08001780       0x54 ..\obj\stm32_ub_lcd_2x16.o
-                0x08001780                P_LCD_2x16_PinHi
+                0x08001784       0x54 ..\obj\stm32_ub_lcd_2x16.o
+                0x08001784                P_LCD_2x16_PinHi
  .text.P_LCD_2x16_Clk
-                0x080017d4       0x28 ..\obj\stm32_ub_lcd_2x16.o
-                0x080017d4                P_LCD_2x16_Clk
+                0x080017d8       0x28 ..\obj\stm32_ub_lcd_2x16.o
+                0x080017d8                P_LCD_2x16_Clk
  .text.P_LCD_2x16_InitSequenz
-                0x080017fc       0x78 ..\obj\stm32_ub_lcd_2x16.o
-                0x080017fc                P_LCD_2x16_InitSequenz
+                0x08001800       0x78 ..\obj\stm32_ub_lcd_2x16.o
+                0x08001800                P_LCD_2x16_InitSequenz
  .text.P_LCD_2x16_Cmd
-                0x08001874      0x100 ..\obj\stm32_ub_lcd_2x16.o
-                0x08001874                P_LCD_2x16_Cmd
+                0x08001878      0x100 ..\obj\stm32_ub_lcd_2x16.o
+                0x08001878                P_LCD_2x16_Cmd
  .text.P_LCD_2x16_Data
-                0x08001974      0x100 ..\obj\stm32_ub_lcd_2x16.o
-                0x08001974                P_LCD_2x16_Data
+                0x08001978      0x100 ..\obj\stm32_ub_lcd_2x16.o
+                0x08001978                P_LCD_2x16_Data
  .text.P_LCD_2x16_Cursor
-                0x08001a74       0x50 ..\obj\stm32_ub_lcd_2x16.o
-                0x08001a74                P_LCD_2x16_Cursor
+                0x08001a78       0x50 ..\obj\stm32_ub_lcd_2x16.o
+                0x08001a78                P_LCD_2x16_Cursor
  .text.P_LCD_2x16_Delay
-                0x08001ac4       0x2c ..\obj\stm32_ub_lcd_2x16.o
-                0x08001ac4                P_LCD_2x16_Delay
+                0x08001ac8       0x2c ..\obj\stm32_ub_lcd_2x16.o
+                0x08001ac8                P_LCD_2x16_Delay
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -514,38 +517,38 @@ Linker script and memory map
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x08001af0        0x4 ..\obj\main.o
+ .rodata        0x08001af4       0x18 ..\obj\main.o
  *(.eh_fram e*)
 
-.glue_7         0x08001af4        0x0
+.glue_7         0x08001b0c        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x08001af4        0x0
+.glue_7t        0x08001b0c        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x08001af4        0x0
+.vfp11_veneer   0x08001b0c        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x08001af4        0x0
+.v4_bx          0x08001b0c        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x08001af4        0x0
+.iplt           0x08001b0c        0x0
  .iplt          0x00000000        0x0 ..\obj\startup_stm32f4xx.o
 
-.rel.dyn        0x08001af4        0x0
+.rel.dyn        0x08001b0c        0x0
  .rel.iplt      0x00000000        0x0 ..\obj\startup_stm32f4xx.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08001af4                __exidx_start = .
+                0x08001b0c                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08001af4                __exidx_end = .
-                0x08001af4                __etext = .
-                0x08001af4                _sidata = __etext
+                0x08001b0c                __exidx_end = .
+                0x08001b0c                __etext = .
+                0x08001b0c                _sidata = __etext
 
-.data           0x20000000       0x8c load address 0x08001af4
+.data           0x20000000       0x8c load address 0x08001b0c
                 0x20000000                __data_start__ = .
                 0x20000000                _sdata = __data_start__
  *(vtable)
@@ -574,10 +577,10 @@ Linker script and memory map
                 0x2000008c                __data_end__ = .
                 0x2000008c                _edata = __data_end__
 
-.igot.plt       0x2000008c        0x0 load address 0x08001b80
+.igot.plt       0x2000008c        0x0 load address 0x08001b98
  .igot.plt      0x00000000        0x0 ..\obj\startup_stm32f4xx.o
 
-.bss            0x2000008c        0xc load address 0x08001b80
+.bss            0x2000008c        0xc load address 0x08001b98
                 0x2000008c                . = ALIGN (0x4)
                 0x2000008c                __bss_start__ = .
                 0x2000008c                _sbss = __bss_start__
@@ -598,7 +601,7 @@ Linker script and memory map
  *(.heap*)
                 0x20000098                __HeapLimit = .
 
-.co_stack       0x20000098      0x800 load address 0x08001b8c
+.co_stack       0x20000098      0x800 load address 0x08001ba4
                 0x20000098                . = ALIGN (0x8)
  *(.co_stack .co_stack.*)
  .co_stack      0x20000098      0x800 ..\obj\startup_stm32f4xx.o
@@ -625,108 +628,108 @@ LOAD c:/program files (x86)/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm
 END GROUP
 OUTPUT(PREHEAT.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x4ccb
+.debug_info     0x00000000     0x4ce0
  .debug_info    0x00000000      0x103 ..\obj\startup_stm32f4xx.o
- .debug_info    0x00000103      0x9a2 ..\obj\main.o
- .debug_info    0x00000aa5      0xd49 ..\obj\stm32f4xx_rcc.o
- .debug_info    0x000017ee      0x157 ..\obj\stm32f4xx_it.o
- .debug_info    0x00001945      0xd14 ..\obj\stm32f4xx_adc.o
- .debug_info    0x00002659      0xf65 ..\obj\printf.o
- .debug_info    0x000035be      0x640 ..\obj\stm32f4xx_gpio.o
- .debug_info    0x00003bfe      0x5f5 ..\obj\system_stm32f4xx.o
- .debug_info    0x000041f3      0x521 ..\obj\adc.o
- .debug_info    0x00004714      0x5b7 ..\obj\stm32_ub_lcd_2x16.o
+ .debug_info    0x00000103      0x9b7 ..\obj\main.o
+ .debug_info    0x00000aba      0xd49 ..\obj\stm32f4xx_rcc.o
+ .debug_info    0x00001803      0x157 ..\obj\stm32f4xx_it.o
+ .debug_info    0x0000195a      0xd14 ..\obj\stm32f4xx_adc.o
+ .debug_info    0x0000266e      0xf65 ..\obj\printf.o
+ .debug_info    0x000035d3      0x640 ..\obj\stm32f4xx_gpio.o
+ .debug_info    0x00003c13      0x5f5 ..\obj\system_stm32f4xx.o
+ .debug_info    0x00004208      0x521 ..\obj\adc.o
+ .debug_info    0x00004729      0x5b7 ..\obj\stm32_ub_lcd_2x16.o
 
-.debug_abbrev   0x00000000      0xed5
+.debug_abbrev   0x00000000      0xeeb
  .debug_abbrev  0x00000000       0xb2 ..\obj\startup_stm32f4xx.o
- .debug_abbrev  0x000000b2      0x1ef ..\obj\main.o
- .debug_abbrev  0x000002a1      0x1e5 ..\obj\stm32f4xx_rcc.o
- .debug_abbrev  0x00000486       0x7f ..\obj\stm32f4xx_it.o
- .debug_abbrev  0x00000505      0x198 ..\obj\stm32f4xx_adc.o
- .debug_abbrev  0x0000069d      0x262 ..\obj\printf.o
- .debug_abbrev  0x000008ff      0x1a5 ..\obj\stm32f4xx_gpio.o
- .debug_abbrev  0x00000aa4      0x138 ..\obj\system_stm32f4xx.o
- .debug_abbrev  0x00000bdc      0x126 ..\obj\adc.o
- .debug_abbrev  0x00000d02      0x1d3 ..\obj\stm32_ub_lcd_2x16.o
+ .debug_abbrev  0x000000b2      0x205 ..\obj\main.o
+ .debug_abbrev  0x000002b7      0x1e5 ..\obj\stm32f4xx_rcc.o
+ .debug_abbrev  0x0000049c       0x7f ..\obj\stm32f4xx_it.o
+ .debug_abbrev  0x0000051b      0x198 ..\obj\stm32f4xx_adc.o
+ .debug_abbrev  0x000006b3      0x262 ..\obj\printf.o
+ .debug_abbrev  0x00000915      0x1a5 ..\obj\stm32f4xx_gpio.o
+ .debug_abbrev  0x00000aba      0x138 ..\obj\system_stm32f4xx.o
+ .debug_abbrev  0x00000bf2      0x126 ..\obj\adc.o
+ .debug_abbrev  0x00000d18      0x1d3 ..\obj\stm32_ub_lcd_2x16.o
 
-.debug_loc      0x00000000     0x1fce
+.debug_loc      0x00000000     0x1ffa
  .debug_loc     0x00000000       0x64 ..\obj\startup_stm32f4xx.o
- .debug_loc     0x00000064      0x17c ..\obj\main.o
- .debug_loc     0x000001e0      0x97c ..\obj\stm32f4xx_rcc.o
- .debug_loc     0x00000b5c      0x18c ..\obj\stm32f4xx_it.o
- .debug_loc     0x00000ce8      0x838 ..\obj\stm32f4xx_adc.o
- .debug_loc     0x00001520      0x3ea ..\obj\printf.o
- .debug_loc     0x0000190a      0x310 ..\obj\stm32f4xx_gpio.o
- .debug_loc     0x00001c1a       0x9c ..\obj\system_stm32f4xx.o
- .debug_loc     0x00001cb6       0x70 ..\obj\adc.o
- .debug_loc     0x00001d26      0x2a8 ..\obj\stm32_ub_lcd_2x16.o
+ .debug_loc     0x00000064      0x1a8 ..\obj\main.o
+ .debug_loc     0x0000020c      0x97c ..\obj\stm32f4xx_rcc.o
+ .debug_loc     0x00000b88      0x18c ..\obj\stm32f4xx_it.o
+ .debug_loc     0x00000d14      0x838 ..\obj\stm32f4xx_adc.o
+ .debug_loc     0x0000154c      0x3ea ..\obj\printf.o
+ .debug_loc     0x00001936      0x310 ..\obj\stm32f4xx_gpio.o
+ .debug_loc     0x00001c46       0x9c ..\obj\system_stm32f4xx.o
+ .debug_loc     0x00001ce2       0x70 ..\obj\adc.o
+ .debug_loc     0x00001d52      0x2a8 ..\obj\stm32_ub_lcd_2x16.o
 
-.debug_aranges  0x00000000      0x598
+.debug_aranges  0x00000000      0x5a0
  .debug_aranges
                 0x00000000       0x28 ..\obj\startup_stm32f4xx.o
  .debug_aranges
-                0x00000028       0x50 ..\obj\main.o
+                0x00000028       0x58 ..\obj\main.o
  .debug_aranges
-                0x00000078      0x178 ..\obj\stm32f4xx_rcc.o
+                0x00000080      0x178 ..\obj\stm32f4xx_rcc.o
  .debug_aranges
-                0x000001f0       0x60 ..\obj\stm32f4xx_it.o
+                0x000001f8       0x60 ..\obj\stm32f4xx_it.o
  .debug_aranges
-                0x00000250      0x148 ..\obj\stm32f4xx_adc.o
+                0x00000258      0x148 ..\obj\stm32f4xx_adc.o
  .debug_aranges
-                0x00000398       0xa0 ..\obj\printf.o
+                0x000003a0       0xa0 ..\obj\printf.o
  .debug_aranges
-                0x00000438       0x88 ..\obj\stm32f4xx_gpio.o
+                0x00000440       0x88 ..\obj\stm32f4xx_gpio.o
  .debug_aranges
-                0x000004c0       0x30 ..\obj\system_stm32f4xx.o
+                0x000004c8       0x30 ..\obj\system_stm32f4xx.o
  .debug_aranges
-                0x000004f0       0x28 ..\obj\adc.o
+                0x000004f8       0x28 ..\obj\adc.o
  .debug_aranges
-                0x00000518       0x80 ..\obj\stm32_ub_lcd_2x16.o
+                0x00000520       0x80 ..\obj\stm32_ub_lcd_2x16.o
 
-.debug_ranges   0x00000000      0x4f8
+.debug_ranges   0x00000000      0x500
  .debug_ranges  0x00000000       0x18 ..\obj\startup_stm32f4xx.o
- .debug_ranges  0x00000018       0x40 ..\obj\main.o
- .debug_ranges  0x00000058      0x168 ..\obj\stm32f4xx_rcc.o
- .debug_ranges  0x000001c0       0x50 ..\obj\stm32f4xx_it.o
- .debug_ranges  0x00000210      0x138 ..\obj\stm32f4xx_adc.o
- .debug_ranges  0x00000348       0x90 ..\obj\printf.o
- .debug_ranges  0x000003d8       0x78 ..\obj\stm32f4xx_gpio.o
- .debug_ranges  0x00000450       0x20 ..\obj\system_stm32f4xx.o
- .debug_ranges  0x00000470       0x18 ..\obj\adc.o
- .debug_ranges  0x00000488       0x70 ..\obj\stm32_ub_lcd_2x16.o
+ .debug_ranges  0x00000018       0x48 ..\obj\main.o
+ .debug_ranges  0x00000060      0x168 ..\obj\stm32f4xx_rcc.o
+ .debug_ranges  0x000001c8       0x50 ..\obj\stm32f4xx_it.o
+ .debug_ranges  0x00000218      0x138 ..\obj\stm32f4xx_adc.o
+ .debug_ranges  0x00000350       0x90 ..\obj\printf.o
+ .debug_ranges  0x000003e0       0x78 ..\obj\stm32f4xx_gpio.o
+ .debug_ranges  0x00000458       0x20 ..\obj\system_stm32f4xx.o
+ .debug_ranges  0x00000478       0x18 ..\obj\adc.o
+ .debug_ranges  0x00000490       0x70 ..\obj\stm32_ub_lcd_2x16.o
 
-.debug_line     0x00000000     0x1de5
+.debug_line     0x00000000     0x1e1b
  .debug_line    0x00000000       0x9b ..\obj\startup_stm32f4xx.o
- .debug_line    0x0000009b      0x29e ..\obj\main.o
- .debug_line    0x00000339      0x556 ..\obj\stm32f4xx_rcc.o
- .debug_line    0x0000088f      0x1cb ..\obj\stm32f4xx_it.o
- .debug_line    0x00000a5a      0x50f ..\obj\stm32f4xx_adc.o
- .debug_line    0x00000f69      0x3f4 ..\obj\printf.o
- .debug_line    0x0000135d      0x2fa ..\obj\stm32f4xx_gpio.o
- .debug_line    0x00001657      0x1b0 ..\obj\system_stm32f4xx.o
- .debug_line    0x00001807      0x1ef ..\obj\adc.o
- .debug_line    0x000019f6      0x3ef ..\obj\stm32_ub_lcd_2x16.o
+ .debug_line    0x0000009b      0x2d3 ..\obj\main.o
+ .debug_line    0x0000036e      0x556 ..\obj\stm32f4xx_rcc.o
+ .debug_line    0x000008c4      0x1cc ..\obj\stm32f4xx_it.o
+ .debug_line    0x00000a90      0x50f ..\obj\stm32f4xx_adc.o
+ .debug_line    0x00000f9f      0x3f4 ..\obj\printf.o
+ .debug_line    0x00001393      0x2fa ..\obj\stm32f4xx_gpio.o
+ .debug_line    0x0000168d      0x1b0 ..\obj\system_stm32f4xx.o
+ .debug_line    0x0000183d      0x1ef ..\obj\adc.o
+ .debug_line    0x00001a2c      0x3ef ..\obj\stm32_ub_lcd_2x16.o
 
-.debug_str      0x00000000     0x2102
+.debug_str      0x00000000     0x210e
  .debug_str     0x00000000       0xfc ..\obj\startup_stm32f4xx.o
                                 0x10e (size before relaxing)
- .debug_str     0x000000fc      0x906 ..\obj\main.o
-                                0x9a4 (size before relaxing)
- .debug_str     0x00000a02      0x66d ..\obj\stm32f4xx_rcc.o
+ .debug_str     0x000000fc      0x912 ..\obj\main.o
+                                0x9bc (size before relaxing)
+ .debug_str     0x00000a0e      0x66d ..\obj\stm32f4xx_rcc.o
                                 0x7ed (size before relaxing)
- .debug_str     0x0000106f       0xd2 ..\obj\stm32f4xx_it.o
+ .debug_str     0x0000107b       0xd2 ..\obj\stm32f4xx_it.o
                                 0x1bd (size before relaxing)
- .debug_str     0x00001141      0x642 ..\obj\stm32f4xx_adc.o
+ .debug_str     0x0000114d      0x642 ..\obj\stm32f4xx_adc.o
                                 0x7a1 (size before relaxing)
- .debug_str     0x00001783      0x4bb ..\obj\printf.o
+ .debug_str     0x0000178f      0x4bb ..\obj\printf.o
                                 0x61b (size before relaxing)
- .debug_str     0x00001c3e      0x19d ..\obj\stm32f4xx_gpio.o
+ .debug_str     0x00001c4a      0x19d ..\obj\stm32f4xx_gpio.o
                                 0x440 (size before relaxing)
- .debug_str     0x00001ddb       0xae ..\obj\system_stm32f4xx.o
+ .debug_str     0x00001de7       0xae ..\obj\system_stm32f4xx.o
                                 0x347 (size before relaxing)
- .debug_str     0x00001e89       0x87 ..\obj\adc.o
+ .debug_str     0x00001e95       0x87 ..\obj\adc.o
                                 0x48c (size before relaxing)
- .debug_str     0x00001f10      0x1f2 ..\obj\stm32_ub_lcd_2x16.o
+ .debug_str     0x00001f1c      0x1f2 ..\obj\stm32_ub_lcd_2x16.o
                                 0x4bf (size before relaxing)
 
 .comment        0x00000000       0x70
@@ -765,14 +768,14 @@ OUTPUT(PREHEAT.elf elf32-littlearm)
  .ARM.attributes
                 0x000001cb       0x33 ..\obj\stm32_ub_lcd_2x16.o
 
-.debug_frame    0x00000000     0x1148
+.debug_frame    0x00000000     0x1164
  .debug_frame   0x00000000       0x48 ..\obj\startup_stm32f4xx.o
- .debug_frame   0x00000048       0xe0 ..\obj\main.o
- .debug_frame   0x00000128      0x4d8 ..\obj\stm32f4xx_rcc.o
- .debug_frame   0x00000600       0xec ..\obj\stm32f4xx_it.o
- .debug_frame   0x000006ec      0x434 ..\obj\stm32f4xx_adc.o
- .debug_frame   0x00000b20      0x244 ..\obj\printf.o
- .debug_frame   0x00000d64      0x19c ..\obj\stm32f4xx_gpio.o
- .debug_frame   0x00000f00       0x64 ..\obj\system_stm32f4xx.o
- .debug_frame   0x00000f64       0x50 ..\obj\adc.o
- .debug_frame   0x00000fb4      0x194 ..\obj\stm32_ub_lcd_2x16.o
+ .debug_frame   0x00000048       0xfc ..\obj\main.o
+ .debug_frame   0x00000144      0x4d8 ..\obj\stm32f4xx_rcc.o
+ .debug_frame   0x0000061c       0xec ..\obj\stm32f4xx_it.o
+ .debug_frame   0x00000708      0x434 ..\obj\stm32f4xx_adc.o
+ .debug_frame   0x00000b3c      0x244 ..\obj\printf.o
+ .debug_frame   0x00000d80      0x19c ..\obj\stm32f4xx_gpio.o
+ .debug_frame   0x00000f1c       0x64 ..\obj\system_stm32f4xx.o
+ .debug_frame   0x00000f80       0x50 ..\obj\adc.o
+ .debug_frame   0x00000fd0      0x194 ..\obj\stm32_ub_lcd_2x16.o

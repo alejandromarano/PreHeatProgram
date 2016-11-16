@@ -5,28 +5,6 @@
  *  Adelante y suerte
  */
 
-/**
-  ******************************************************************************
-  * @file    main.c
-  * @author  German Feres - TDII
-  * @version
-  * @date    01-Mayo-2014
-  * @brief   Inicializa el port D pin 12,13,14,15 como salidas
-  * 		 y el port A pin 0 como entrada
-  *
-  * LEDS USER
-  * led3 user naranja puerto I/O PD13
-  * led4 user verde puerto I/O PD12
-  * led5 user rojo puerto I/O PD14
-  * led6 user azul puerto I/O PD15
-  *
-  * USER Button
-  * PA0
-
-
-  ******************************************************************************
- **/
-
 #include "stm32f4xx.h"
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
@@ -37,14 +15,13 @@
 
 void Delay(__IO uint32_t nTime);  //funcion Delay que usa SysTick
 
-#define MAX_ADC	4095.0
+#define MAX_ADC	4095.0    // resolucion de ADC 12bit
 
 int32_t adc_valor_obtenido;
 
 uint32_t time_ms = 0;
 
 static __IO uint32_t TimingDelay;
-
 
 int main(void)
 	{
@@ -73,36 +50,19 @@ int main(void)
     while (1)
     	{
 
-    	Delay(500);
-
     	adc_valor_obtenido=adc_leer_cuentas();   // Lee el ADC de la funcion adc.h y PHinclude
 
     	adc_valor_obtenido=((adc_valor_obtenido*300)/4095);  // de Tension de ADC a Grados centigrados
 
     	sprintf(temperatura,"%d",adc_valor_obtenido);   // pasa de un entero a un String para imprimir
 
-    	UB_LCD_2x16_String(0,1,temperatura);    // usa una funcion ya definida para imprimir un string
-    	Delay(500);
     	UB_LCD_2x16_Clear();                    //usa una funcion ya definida para limpiar las string
+    	UB_LCD_2x16_String(0,0,"Temp actual:");
+    	UB_LCD_2x16_String(0,1,temperatura);    // usa una funcion ya definida para imprimir un string
+    	UB_LCD_2x16_String(3,1,"\176");
+    	Delay(500);
 
-
-    	    GPIO_ResetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
-
-    	    if(adc_valor_obtenido<30)   //menor de 30 grados enciende el led VERDE
-    	    {
-    	    	GPIO_SetBits(GPIOD,GPIO_Pin_12);
-    	    	GPIO_ResetBits(GPIOD,GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
-    	    }
-
-    	    if(adc_valor_obtenido>=30) //Mayor o igual a  30 grados enciende el led ROJO
-    	       {
-    	    	GPIO_SetBits(GPIOD,GPIO_Pin_13);
-    	       	GPIO_ResetBits(GPIOD,GPIO_Pin_14|GPIO_Pin_15);
-    	       }
-
-    	    Delay(500);
-
-    	    GPIO_ResetBits(GPIOD, GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
+    	//color_segun_temperatura();
 
     	}
 	}
@@ -123,3 +83,19 @@ void TimingDelay_Decrement(void)
   }
 }
 
+void color_segun_temperatura()
+{
+				//GPIO_ResetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15); //restart todos los led
+
+	    	    if(adc_valor_obtenido<30)   //menor de 30 grados enciende el led VERDE
+	    	    {
+	    	    	GPIO_SetBits(GPIOD,GPIO_Pin_12);
+	    	    	GPIO_ResetBits(GPIOD,GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
+	    	    }
+
+	    	    if(adc_valor_obtenido>=30) //Mayor o igual a  30 grados enciende el led ROJO
+	    	       {
+	    	    	GPIO_SetBits(GPIOD,GPIO_Pin_13);
+	    	       	GPIO_ResetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_14|GPIO_Pin_15);
+	    	       }
+}
