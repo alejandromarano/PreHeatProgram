@@ -1,0 +1,183 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+TIM_TimeBaseStructure
+                    0xc               ..\obj\main.o (symbol from plugin)
+TIM_OCInitStructure
+                    0x14              ..\obj\main.o (symbol from plugin)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 ..\obj\startup_stm32f4xx.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\main.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\stm32f4xx_rcc.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\stm32f4xx_gpio.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\system_stm32f4xx.o (symbol from plugin)
+ .text          0x00000000        0x0 ..\obj\stm32f4xx_tim.o (symbol from plugin)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x08000000         0x00100000         xr
+ram              0x20000000         0x00020000         xrw
+ram1             0x10000000         0x00010000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x20020000                _eram = 0x20020000
+
+.text           0x08000000      0xb30
+ *(.isr_vector)
+ .isr_vector    0x08000000      0x188 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+                0x08000000                g_pfnVectors
+ *(.text*)
+ .text          0x08000188      0x9a8 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+                0x08000188                Reset_Handler
+                0x080001f8                main
+ *(.init)
+ *(.fini)
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+ *(.rodata*)
+ *(.eh_fram e*)
+
+.glue_7         0x08000b30        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x08000b30        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x08000b30        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x08000b30        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x08000b30        0x0
+ .iplt          0x00000000        0x0 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.rel.dyn        0x08000b30        0x0
+ .rel.iplt      0x00000000        0x0 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x08000b30                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x08000b30                __exidx_end = .
+                0x08000b30                __etext = .
+                0x08000b30                _sidata = __etext
+
+.data           0x20000000       0x24 load address 0x08000b30
+                0x20000000                __data_start__ = .
+                0x20000000                _sdata = __data_start__
+ *(vtable)
+ *(.data*)
+ .data          0x20000000       0x24 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+                0x20000024                . = ALIGN (0x4)
+                0x20000024                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x20000024                PROVIDE (__preinit_array_end, .)
+                0x20000024                . = ALIGN (0x4)
+                0x20000024                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array)
+                0x20000024                PROVIDE (__init_array_end, .)
+                0x20000024                . = ALIGN (0x4)
+                0x20000024                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+                0x20000024                PROVIDE (__fini_array_end, .)
+ *(.jcr*)
+                0x20000024                . = ALIGN (0x4)
+                0x20000024                __data_end__ = .
+                0x20000024                _edata = __data_end__
+
+.igot.plt       0x20000024        0x0 load address 0x08000b54
+ .igot.plt      0x00000000        0x0 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.bss            0x20000024       0x24 load address 0x08000b54
+                0x20000024                . = ALIGN (0x4)
+                0x20000024                __bss_start__ = .
+                0x20000024                _sbss = __bss_start__
+ *(.bss*)
+ .bss           0x20000024       0x24 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+ *(COMMON)
+                0x20000048                . = ALIGN (0x4)
+                0x20000048                __bss_end__ = .
+                0x20000048                _ebss = __bss_end__
+
+.heap           0x20000048        0x0
+                0x20000048                __end__ = .
+                0x20000048                _end = __end__
+                0x20000048                end = __end__
+ *(.heap*)
+                0x20000048                __HeapLimit = .
+
+.co_stack       0x20000048      0x800 load address 0x08000b78
+                0x20000048                . = ALIGN (0x8)
+ *(.co_stack .co_stack.*)
+ .co_stack      0x20000048      0x800 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+                0x20020000                __StackTop = (ORIGIN (ram) + 0x20000)
+                0x2001f800                __StackLimit = (__StackTop - SIZEOF (.co_stack))
+                0x20020000                PROVIDE (__stack, __StackTop)
+                0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region ram  overflowed with stack)
+LOAD ..\obj\startup_stm32f4xx.o
+LOAD C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+LOAD c:/program files (x86)/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a
+LOAD c:/program files (x86)/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/armv7e-m\libg.a
+LOAD c:/program files (x86)/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a
+LOAD ..\obj\main.o
+LOAD ..\obj\stm32f4xx_rcc.o
+LOAD ..\obj\stm32f4xx_gpio.o
+LOAD ..\obj\system_stm32f4xx.o
+LOAD ..\obj\stm32f4xx_tim.o
+START GROUP
+LOAD c:/program files (x86)/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a
+LOAD c:/program files (x86)/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/armv7e-m\libg.a
+LOAD c:/program files (x86)/gnu tools arm embedded/4.7 2013q1/bin/../lib/gcc/arm-none-eabi/4.7.3/../../../../arm-none-eabi/lib/armv7e-m\libc.a
+END GROUP
+OUTPUT(PWM.elf elf32-littlearm)
+
+.debug_info     0x00000000      0xa2c
+ .debug_info    0x00000000      0xa2c C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.debug_abbrev   0x00000000      0x1f8
+ .debug_abbrev  0x00000000      0x1f8 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.debug_loc      0x00000000      0x324
+ .debug_loc     0x00000000      0x324 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.debug_aranges  0x00000000       0x20
+ .debug_aranges
+                0x00000000       0x20 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.debug_line     0x00000000      0x352
+ .debug_line    0x00000000      0x352 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.debug_str      0x00000000      0x6ce
+ .debug_str     0x00000000      0x6ce C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+                                0x6dc (size before relaxing)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+                                 0x71 (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x31
+ .ARM.attributes
+                0x00000000       0x31 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o
+
+.debug_frame    0x00000000      0x1b8
+ .debug_frame   0x00000000      0x1b8 C:\Users\zero_\AppData\Local\Temp\ccyS2oo9.ltrans0.ltrans.o

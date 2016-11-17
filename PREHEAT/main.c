@@ -87,7 +87,7 @@ int devolver_temperatura_en_grados()
 
 	temperatura=adc_leer_cuentas();   // Lee el ADC de la funcion adc.h y PHinclude
 
-	temperatura=((temperatura*300)/4095);  // de Tension de ADC a Grados centigrados
+	temperatura=((temperatura*3000)/4095);  // de Tension de ADC a Grados centigrados
 
 	return temperatura;
 }
