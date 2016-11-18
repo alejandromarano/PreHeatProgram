@@ -81,31 +81,10 @@ void TIM_Config(void);
 
 int main(void)
 {
-	/* Timer data for PWM */
-//	    TM_PWM_TIM_t TIM_Data;
-	    char buf[150];
-	    uint8_t devices, i, count;
-	    /* DS18B20 devices ID */
-	    uint8_t device[EXPECTING_SENSORS][8];
-	    /* Temperatures from 2 sensors */
-	    float temps[EXPECTING_SENSORS];
-	    /* PID error */
-	    float pid_error;
-	    /* Duty cycle for PWM */
-	    float duty = 0;
-	    /* ARM PID Instance, float_32 format */
-	    arm_pid_instance_f32 PID;
-	    /* One wire instance */
-	    TM_OneWire_t OneWire;
 
-	    /* Set PID parameters */
-	    /* Set this for your needs */
-	    PID.Kp = PID_PARAM_KP;        /* Proporcional */
-	    PID.Ki = PID_PARAM_KI;        /* Integral */
-	    PID.Kd = PID_PARAM_KD;        /* Derivative */
 
 	    /* Initialize PID system, float32_t format */
-	    arm_pid_init_f32(&PID, 1);
+	 //   arm_pid_init_f32(&PID, 1);
 
 
   SystemInit(); //Fuerza a que tome la configuracion del CLOCK de system_stm32f4.c
