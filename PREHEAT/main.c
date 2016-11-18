@@ -33,7 +33,7 @@ void TIM_Config(void);
 TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;   //variable para el timer y PWM
 TIM_OCInitTypeDef  TIM_OCInitStructure;   //variable para el timer y PWM
 
-uint16_t duty = 0; //   DUTY !!! (ciclo de trabajo)
+uint16_t duty = 250; //   DUTY !!! (ciclo de trabajo)
 uint16_t PrescalerValue = 0;
 
 #define MAX_ADC	4095.0    // resolucion de ADC 12bit
@@ -47,6 +47,8 @@ int main(void)
 	{
 
 	SystemInit(); // inicializa el sistema
+
+	TIM_Config();
 
 	UB_LCD_2x16_Init(); // inicializa el display 16x2
 
@@ -69,12 +71,12 @@ int main(void)
 	char stringtemperatura[4]; // String donde se guarda la temperatura
 
 	 /* Compute the prescaler value */
-	  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 2800) - 1; // 28000000
+	  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 500000) - 1; // 1MHZ
 
 	//PWM PWM PWM PWM PWM PWM PWM PWM PMW
 	/* Time base configuration */
 	  TIM_TimeBaseStructure.TIM_Period = 499; //499
-	  TIM_TimeBaseStructure.TIM_Prescaler =100000 ;
+	  TIM_TimeBaseStructure.TIM_Prescaler =PrescalerValue ;
 	  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
 	  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 

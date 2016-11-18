@@ -52,7 +52,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="E:/PreHeat/PreHeatProgram/EJEMPLOS/ZIP ORIGINALES/PWM/main.c" title="main.c" tooltip="E:/PreHeat/PreHeatProgram/EJEMPLOS/ZIP ORIGINALES/PWM/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PWM/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2214" selectionTopPixel="413"/>
+<editorState selectionHorizontalPixel="0" selectionLength="74" selectionOffset="4715" selectionTopPixel="1836"/>
 </editor>
 </editors>
 <views>
@@ -347,6 +347,9 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f4xx.c" tooltip="PREHEAT/cmsis_boot/system_stm32f4xx.c">
+<persistable path="/PREHEAT/cmsis_boot/system_stm32f4xx.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_tim.h" tooltip="PREHEAT/cmsis_lib/include/stm32f4xx_tim.h">
 <persistable path="/PREHEAT/cmsis_lib/include/stm32f4xx_tim.h"/>
 </file>
@@ -385,9 +388,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_lcd_2x16.c" tooltip="PREHEAT/cmsis_lib/include/stm32_ub_lcd_2x16.c">
 <persistable path="/PREHEAT/cmsis_lib/include/stm32_ub_lcd_2x16.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_lcd_2x16.c" tooltip="Marano_TP3_EJ1/ub_lib/stm32_ub_lcd_2x16.c">
-<persistable path="/Marano_TP3_EJ1/ub_lib/stm32_ub_lcd_2x16.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx.h" tooltip="LCD2x16-Ejemplo/cmsis_boot/stm32f4xx.h">
 <persistable path="/LCD2x16-Ejemplo/cmsis_boot/stm32f4xx.h"/>

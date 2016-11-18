@@ -53,7 +53,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="E:/PreHeat/PreHeatProgram/EJEMPLOS/PWM/main.c" title="main.c" tooltip="E:/PreHeat/PreHeatProgram/EJEMPLOS/PWM/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PWM/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="498" selectionOffset="3318" selectionTopPixel="1394"/>
+<editorState selectionHorizontalPixel="0" selectionLength="497" selectionOffset="3319" selectionTopPixel="1394"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="PID_FUNCIONES.h" partName="PID_FUNCIONES.h" path="E:/PreHeat/PreHeatProgram/EJEMPLOS/PWM/cmsis_lib/include/PID_FUNCIONES.h" title="PID_FUNCIONES.h" tooltip="E:/PreHeat/PreHeatProgram/EJEMPLOS/PWM/cmsis_lib/include/PID_FUNCIONES.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PWM/cmsis_lib/include/PID_FUNCIONES.h"/>
@@ -347,6 +347,9 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f4xx.c" tooltip="PREHEAT/cmsis_boot/system_stm32f4xx.c">
+<persistable path="/PREHEAT/cmsis_boot/system_stm32f4xx.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_tim.h" tooltip="PREHEAT/cmsis_lib/include/stm32f4xx_tim.h">
 <persistable path="/PREHEAT/cmsis_lib/include/stm32f4xx_tim.h"/>
 </file>
@@ -385,9 +388,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_lcd_2x16.c" tooltip="PREHEAT/cmsis_lib/include/stm32_ub_lcd_2x16.c">
 <persistable path="/PREHEAT/cmsis_lib/include/stm32_ub_lcd_2x16.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_lcd_2x16.c" tooltip="Marano_TP3_EJ1/ub_lib/stm32_ub_lcd_2x16.c">
-<persistable path="/Marano_TP3_EJ1/ub_lib/stm32_ub_lcd_2x16.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="PHinclude.h" tooltip="PREHEAT/cmsis_lib/include/PHinclude.h">
 <persistable path="/PREHEAT/cmsis_lib/include/PHinclude.h"/>

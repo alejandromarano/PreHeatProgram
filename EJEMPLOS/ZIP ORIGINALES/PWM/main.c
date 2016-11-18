@@ -116,7 +116,7 @@ int main(void)
   ----------------------------------------------------------------------- */
 
   /* Compute the prescaler value */
-  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 2800) - 1; // 28000000
+  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 500000) - 1; // 1MHZ
 
   /* Time base configuration */
   TIM_TimeBaseStructure.TIM_Period = 499; //499
