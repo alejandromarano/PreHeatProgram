@@ -26,14 +26,16 @@
 #define PID_PARAM_KD		20			/* Derivative */                      //0.25
 
 void Delay(__IO uint32_t nTime);  //funcion Delay que usa SysTick
-int devolver_temperatura_en_grados(); // funcion PHinclude
+int32_t devolver_temperatura_en_grados(); // funcion PHinclude
 void color_segun_temperatura();
+void iniciarPWM();
 void TIM_Config(void);
+void arm_pid_init_f32();
 
 TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;   //variable para el timer y PWM
 TIM_OCInitTypeDef  TIM_OCInitStructure;   //variable para el timer y PWM
 
-uint16_t duty = 250; //   DUTY !!! (ciclo de trabajo)
+
 uint16_t PrescalerValue = 0;
 
 #define MAX_ADC	4095.0    // resolucion de ADC 12bit
@@ -46,9 +48,27 @@ static __IO uint32_t TimingDelay;
 int main(void)
 	{
 
+	uint16_t duty; //   DUTY !!! (ciclo de trabajo)
+	float pid_error=0;
+
+	int32_t temperatura_Actual=0,temperatura_Deseada=200;
+
+	arm_pid_instance_f32 PID;
+
+	/* Set PID parameters */
+		/* Set this for your needs */
+		PID.Kp = PID_PARAM_KP;		/* Proporcional */
+		PID.Ki = PID_PARAM_KI;		/* Integral */
+		PID.Kd = PID_PARAM_KD;		/* Derivative */
+
+	/* Initialize PID system, float32_t format */
+	PID.state[0]=0;
+	PID.state[1]=0;
+	PID.state[2]=0;
+
 	SystemInit(); // inicializa el sistema
 
-	TIM_Config();
+	TIM_Config(); // config timers para PWM y demas
 
 	UB_LCD_2x16_Init(); // inicializa el display 16x2
 
@@ -70,36 +90,15 @@ int main(void)
 
 	char stringtemperatura[4]; // String donde se guarda la temperatura
 
-	 /* Compute the prescaler value */
-	  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 500000) - 1; // 1MHZ
+	iniciarPWM();
 
-	//PWM PWM PWM PWM PWM PWM PWM PWM PMW
-	/* Time base configuration */
-	  TIM_TimeBaseStructure.TIM_Period = 499; //499
-	  TIM_TimeBaseStructure.TIM_Prescaler =PrescalerValue ;
-	  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-	  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 
-	  TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
 
-	  /* PWM1 Mode configuration: Channel1 */
-	  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
-	  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	  TIM_OCInitStructure.TIM_Pulse = duty;                         // DUTY !!!
-	  TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
-
-	  TIM_OC1Init(TIM3, &TIM_OCInitStructure);
-
-	  TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
-
-	  TIM_ARRPreloadConfig(TIM3, ENABLE);
-
-	  /* TIM3 enable counter */
-	  TIM_Cmd(TIM3, ENABLE);
-	//PWM PWM PWM PWM PWM PWM PWM PWM PMW
 
 	while (1)
     	{
+
+		temperatura_Actual=devolver_temperatura_en_grados();
 
     	sprintf(stringtemperatura,"%d",devolver_temperatura_en_grados());   // pasa de un entero a un String para imprimir
 
@@ -110,6 +109,23 @@ int main(void)
     	Delay(250);
 
     	//color_segun_temperatura();
+
+
+    	/* Calculate error */
+    	pid_error =  temperatura_Actual-temperatura_Deseada;
+
+    					/* Calculate PID here, argument is error */
+    					/* Output data will be returned, we will use it as duty cycle parameter */
+    		duty = arm_pid_f32(&PID, pid_error);
+
+    		/* Check overflow, duty cycle in percent */
+    					if (duty > 100) {
+    						duty = 100;
+    					} else if (duty < 0) {
+    						duty = 0;
+    					}
+
+    	TIM_OCInitStructure.TIM_Pulse=duty;
 
     	}
 	}
@@ -130,7 +146,7 @@ void TimingDelay_Decrement(void)
   }
 }
 
-int devolver_temperatura_en_grados()
+int32_t devolver_temperatura_en_grados()
 {
 	int32_t temperatura=0;
 
@@ -160,3 +176,35 @@ void color_segun_temperatura()
 	    	       	GPIO_ResetBits(GPIOD,GPIO_Pin_12|GPIO_Pin_14|GPIO_Pin_15);
 	    	       }
 }
+
+void iniciarPWM()
+{
+	 /* Compute the prescaler value */
+		  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 500000) - 1; // 1MHZ
+
+	//PWM PWM PWM PWM PWM PWM PWM PWM PMW
+		/* Time base configuration */
+		  TIM_TimeBaseStructure.TIM_Period = 499; //499
+		  TIM_TimeBaseStructure.TIM_Prescaler =PrescalerValue ;
+		  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+		  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+
+		  TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
+
+		  /* PWM1 Mode configuration: Channel1 */
+		  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+		  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+		  TIM_OCInitStructure.TIM_Pulse = 250;                         // DUTY !!!
+		  TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+
+		  TIM_OC1Init(TIM3, &TIM_OCInitStructure);
+
+		  TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
+
+		  TIM_ARRPreloadConfig(TIM3, ENABLE);
+
+		  /* TIM3 enable counter */
+		  TIM_Cmd(TIM3, ENABLE);
+		//PWM PWM PWM PWM PWM PWM PWM PWM PMW
+}
+
