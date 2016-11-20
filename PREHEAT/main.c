@@ -28,7 +28,7 @@
 void Delay(__IO uint32_t nTime);  //funcion Delay que usa SysTick
 int32_t devolver_temperatura_en_grados(); // funcion PHinclude
 void color_segun_temperatura();
-void iniciarPWM();
+void iniciarPWM(int duty);
 void TIM_Config(void);
 void arm_pid_init_f32();
 
@@ -51,17 +51,21 @@ int main(void)
 	uint16_t duty; //   DUTY !!! (ciclo de trabajo)
 	float pid_error=0;
 
-	int32_t temperatura_Actual=0,temperatura_Deseada=200;
+	int32_t temperatura_Actual=0,temperatura_Deseada=500;
 
 	arm_pid_instance_f32 PID;
 
 	/* Set PID parameters */
 		/* Set this for your needs */
-		PID.Kp = PID_PARAM_KP;		/* Proporcional */
-		PID.Ki = PID_PARAM_KI;		/* Integral */
-		PID.Kd = PID_PARAM_KD;		/* Derivative */
+	PID.Kp = PID_PARAM_KP;		/* Proporcional */
+	PID.Ki = PID_PARAM_KI;		/* Integral */
+	PID.Kd = PID_PARAM_KD;		/* Derivative */
 
 	/* Initialize PID system, float32_t format */
+	PID.A0 = PID_PARAM_KP + PID_PARAM_KI + PID_PARAM_KD; //The derived gain, A0 = Kp + Ki + Kd . */
+	PID.A1 = (-PID_PARAM_KP - (2*PID_PARAM_KD) );  //The derived gain, A1 = -Kp - 2Kd. */
+    PID.A2 = PID_PARAM_KD; // The derived gain, A2 = Kd . */
+
 	PID.state[0]=0;
 	PID.state[1]=0;
 	PID.state[2]=0;
@@ -90,9 +94,6 @@ int main(void)
 
 	char stringtemperatura[4]; // String donde se guarda la temperatura
 
-	iniciarPWM();
-
-
 
 
 	while (1)
@@ -100,6 +101,7 @@ int main(void)
 
 		temperatura_Actual=devolver_temperatura_en_grados();
 
+		/*
     	sprintf(stringtemperatura,"%d",devolver_temperatura_en_grados());   // pasa de un entero a un String para imprimir
 
     	UB_LCD_2x16_Clear();                    //usa una funcion ya definida para limpiar las string
@@ -107,16 +109,16 @@ int main(void)
     	UB_LCD_2x16_String(0,1,stringtemperatura);    // usa una funcion ya definida para imprimir un string
     	UB_LCD_2x16_String(3,1,"\176");
     	Delay(250);
-
+		*/
     	//color_segun_temperatura();
-
+		Delay(5);
 
     	/* Calculate error */
-    	pid_error =  temperatura_Actual-temperatura_Deseada;
+    	pid_error =  temperatura_Deseada-temperatura_Actual;
 
     					/* Calculate PID here, argument is error */
     					/* Output data will be returned, we will use it as duty cycle parameter */
-    		duty = arm_pid_f32(&PID, pid_error);
+    	duty = arm_pid_f32(&PID, pid_error);
 
     		/* Check overflow, duty cycle in percent */
     					if (duty > 100) {
@@ -125,7 +127,11 @@ int main(void)
     						duty = 0;
     					}
 
-    	TIM_OCInitStructure.TIM_Pulse=duty;
+    	duty= ((498/100)*(duty));
+
+    	iniciarPWM(duty);
+
+    	//TIM_OCInitStructure.TIM_Pulse=duty;
 
     	}
 	}
@@ -177,7 +183,7 @@ void color_segun_temperatura()
 	    	       }
 }
 
-void iniciarPWM()
+void iniciarPWM(int duty)
 {
 	 /* Compute the prescaler value */
 		  PrescalerValue = (uint16_t) ((SystemCoreClock /2) / 500000) - 1; // 1MHZ
@@ -194,7 +200,7 @@ void iniciarPWM()
 		  /* PWM1 Mode configuration: Channel1 */
 		  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
 		  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-		  TIM_OCInitStructure.TIM_Pulse = 250;                         // DUTY !!!
+		  TIM_OCInitStructure.TIM_Pulse = duty;                         // DUTY !!!
 		  TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 
 		  TIM_OC1Init(TIM3, &TIM_OCInitStructure);
@@ -208,3 +214,22 @@ void iniciarPWM()
 		//PWM PWM PWM PWM PWM PWM PWM PWM PMW
 }
 
+void control_PID(arm_pid_instance_f32 *PID,int temperatura_Deseada, uint16_t duty)
+{
+	int32_t temperatura_Actual=devolver_temperatura_en_grados();
+
+	float pid_error =  temperatura_Deseada-temperatura_Actual;
+
+	duty = arm_pid_f32(PID, pid_error);
+
+    		/* Check overflow, duty cycle in percent */
+    					if (duty > 100) {
+    						duty = 100;
+    					} else if (duty < 0) {
+    						duty = 0;
+    					}
+
+    	duty= ((65535/100)*(duty));
+
+    	iniciarPWM(duty);
+}
